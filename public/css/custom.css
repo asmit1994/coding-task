@@ -1,0 +1,13 @@
+.search-breadcrumb-only .breadcrumb{
+    margin-top: -10px;
+    margin-bottom: -5px;
+    font-family: "Agency FB";
+    font-size: x-large;
+}
+.row{
+    margin-top: 15px;
+}
+
+.table-hover tbody {
+    background-color: #dddddd;
+}

@@ -2,35 +2,30 @@
 
 namespace App\Http\Controllers;
 
-use App\Client;
 use App\Http\Requests\ClientRequest;
+use App\Services\ClientService;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
 {
-    private $clients;
-    public function __construct(Client $clients)
+    public $client;
+
+    public function __construct(ClientService $client)
     {
-        $this->clients = $clients;
+        $this->client = $client;
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return $this
      */
     public function index()
     {
-        $clients = $this->clients
-            ->paginate(5);
-
-        return view('clients.index', compact('clients'));
+        $clients = $this->client->all();
+        return view('clients.index',compact('clients'))->with('i',1);
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create()
     {
@@ -38,70 +33,69 @@ class ClientController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param ClientRequest $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(ClientRequest $request)
     {
-        //dd($request->all());
-        Client::create($request->all());
+        $this->client->create($request);
 
-        return redirect(route('clients.index'))->with('status', 'Client Record Created Successfully!');
+        return redirect(route('clients.index'))->with('status','Client Record Created Successfully');
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show($id)
     {
-        $client = $this->clients->findOrFail($id);
+        $client = $this->client->find($id);
 
-        return view('clients.show', compact('client'));
+        return view('clients.show',compact('client'));
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit($id)
     {
-        $edit = $this->clients->findOrFail($id);
-        return view('clients.edit', compact('edit'));
+        $client = $this->client->find($id);
+
+        return view('clients.edit', compact('client','id'));
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param ClientRequest $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(ClientRequest $request, $id)
+    public function update(ClientRequest  $request, $id)
     {
-        $client = $this->clients->findOrFail($id);
-        $client->update($request->all());
+        $this->client->update($request,$id);
 
-        return redirect(route('clients.index'))->with('status', 'Client Record Updated Successfully!');
+        return redirect(route('clients.index'))->with('status','Client Record Updated Successfully');
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function confirm($id)
+    {
+        $client = $this->client->find($id);
+
+        return view('clients.confirm',compact('client','id'));
+    }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
-        $client = $this->clients->findOrFail($id);
-        $client->delete();
+        $this->client->delete($id);
 
-        return redirect(route('clients.index'))->with('status','Client Record Deleted Successfully!');
+        return redirect(route('clients.index'))->with('status','Client Deleted Successfully');
     }
 }

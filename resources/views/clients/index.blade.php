@@ -26,12 +26,10 @@
 
                     <div class="box-body">
                         @if(count($clients)>0)
-                            <table id="example1" class="table table-hover table-striped">
+                            <table class="table table-striped table-hover" id="client-table">
                                 <thead>
                                 <tr>
-                                    <th>S.N.</th>
                                     <th>Name</th>
-                                    <th>Gender</th>
                                     <th>Email</th>
                                     <th>Phone</th>
                                     <th>Address</th>
@@ -42,56 +40,61 @@
                                     <th>Actions</th>
                                 </tr>
                                 </thead>
-
                                 <tbody>
-                                <?php
-                                $i = $clients->firstItem();
-                                ?>
-                                @foreach($clients as $key => $client)
-                                    <tr>
-                                        <td>{{$i++}}.</td>
+                                @foreach($clients as $client)
+                                    @if($client['name'] == '')
+                                        <tr class="danger">
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td class="text-center">Record Deleted</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>
+                                                <a href="{{ route('clients.edit',$i) }}">
+                                                    <i class="fa fa-plus"></i> Add Record
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <?php ++$i;  ?>
+                                    @else
+                                        <tr>
+                                            <td>{{ $client['name'] }}</td>
+                                            <td>{{ $client['email'] }}</td>
+                                            <td>{{ $client['phone'] }}</td>
+                                            <td>{{ $client['address'] }}</td>
+                                            <td>{{ $client['nationality'] }}</td>
+                                            <td>{{ $client['date_of_birth'] }}</td>
+                                            <td>{{ $client['education'] }}</td>
+                                            <td>{{ $client['preferred_contact'] }}</td>
+                                            <td>
+                                                <a href="{{ route('clients.show', $i) }}"
+                                                   title="View Client Record!" data-rel="tooltip">
+                                                    <i class="icon fa fa-eye"></i>
+                                                </a>
 
-                                        <td>{{ $client->name }}</td>
+                                                <a href="{{ route('clients.edit', $i) }}"
+                                                   title="Edit Client Record!" data-rel="tooltip">
+                                                    <i class="icon fa fa-edit"></i>
+                                                </a>
 
-                                        <td>{{ $client->gender }}</td>
+                                                <a href="{{ URL::to('clients/destroy/'.$i) }}"
+                                                   title="Delete Client Record!" data-rel="tooltip"
+                                                   onclick="return ConfirmDelete()">
+                                                    <i class="icon fa fa-trash"></i>
+                                                </a>
+                                            </td>
 
-                                        <td>{{ $client->email }}</td>
+                                            <?php ++$i;  ?>
+                                        </tr>
+                                    @endif
 
-                                        <td>{{ $client->phone }}</td>
-
-                                        <td>{{ $client->address }}</td>
-
-                                        <td>{{ $client->nationality }}</td>
-
-                                        <td>{{ $client->date_of_birth }}</td>
-
-                                        <td>{{ $client->education }}</td>
-
-                                        <td>{{ $client->preferred_contact }}</td>
-
-                                        <td>
-                                            <a href="{{ route('clients.show', $client->id) }}"
-                                               title="View Client Record!" data-rel="tooltip">
-                                                <i class="fa fa-eye"></i>
-                                            </a>
-
-                                            <a href="{{ route('clients.edit', $client->id) }}"
-                                               title="Edit Client Record!" data-rel="tooltip">
-                                                <i class="fa fa-edit"></i>
-                                            </a>
-
-                                            <a href="{{ URL::to('clients/destroy/'.$client->id) }}"
-                                                title="Delete Client Record!" data-rel="tooltip"
-                                               onclick="return ConfirmDelete()">
-                                                <i class="fa fa-trash"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
                                 @endforeach
-
                                 </tbody>
                             </table>
-                            {{$clients->render()}}
+                            {{--{{$clients->render()}}--}}
 
                         @else
                             <div class="alert alert-danger">

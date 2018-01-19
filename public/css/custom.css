@@ -7,7 +7,12 @@
 .row{
     margin-top: 15px;
 }
-
 .table-hover tbody {
     background-color: #dddddd;
+}
+#client-table .icon {
+    font-size: 18px;
+}
+#client-table a {
+    padding-right: 10px;
 }

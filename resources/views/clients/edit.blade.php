@@ -21,7 +21,7 @@
                 <div class="box">
                     <div class="box-body">
 
-                        <form method="post" action="{{ route('clients.update', $edit->id) }}" id="clientform">
+                        <form method="post" action="{{ route('clients.update', $id) }}" id="clientform">
                             <input name="_method" type="hidden" value="PUT">
 
                             {{ csrf_field() }}
@@ -31,7 +31,7 @@
                                     <label for="name" class="form-control-label">Client Name<span
                                                 class="text-danger">*</span></label>
                                     <input type="text" name="name" placeholder="Enter Client Name."
-                                           value="{{ $edit->name }}"
+                                           value="{{ $client['name'] }}"
                                            class="form-control" id="name" required>
                                     @if ($errors->has('name'))
                                         <span class="help-block text-danger">
@@ -46,13 +46,13 @@
 
                                     <select class="form-control" id="gender" name="gender" required>
                                         <option value="">Select Gender</option>
-                                        <option value="Male" @if($edit->gender=='Male') <?php echo 'selected' ?> @endif>
+                                        <option value="Male" @if($client['gender']=='Male') <?php echo 'selected' ?> @endif>
                                             Male
                                         </option>
-                                        <option value="Female" @if($edit->gender=='Female') <?php echo 'selected' ?> @endif>
+                                        <option value="Female" @if($client['gender']=='Female') <?php echo 'selected' ?> @endif>
                                             Female
                                         </option>
-                                        <option value="Others" @if($edit->gender=='Others') <?php echo 'selected' ?> @endif>
+                                        <option value="Others" @if($client['gender']=='Others') <?php echo 'selected' ?> @endif>
                                             Other
                                         </option>
                                     </select>
@@ -70,7 +70,7 @@
                                     <label for="phone">Phone<span class="text-danger">*</span></label>
 
                                     <input type="text" name="phone" placeholder="Enter Your Phone Number."
-                                           value="{{ $edit->phone }}"
+                                           value="{{ $client['phone'] }}"
                                            class="form-control" id="phone" required>
                                     @if ($errors->has('phone'))
                                         <span class="help-block text-danger">
@@ -83,7 +83,7 @@
                                     <label for="email">Email<span class="text-danger">*</span></label>
 
                                     <input type="text" name="email" placeholder="Enter your Email."
-                                           value="{{ $edit->email }}"
+                                           value="{{ $client['email'] }}"
                                            class="form-control" id="email" required>
                                     @if ($errors->has('email'))
                                         <span class="help-block text-danger">
@@ -98,7 +98,7 @@
                                 <div class="col-lg-6">
                                     <label for="address">Address<span class="text-danger">*</span></label>
                                     <input type="text" name="address" placeholder="Enter your Address."
-                                           value="{{ $edit->address }}"
+                                           value="{{ $client['address'] }}"
                                            class="form-control" id="address" required>
                                     @if ($errors->has('address'))
                                         <span class="help-block text-danger">
@@ -110,7 +110,7 @@
                                 <div class="col-lg-6">
                                     <label for="nationality">Nationality<span class="text-danger">*</span></label>
                                     <input type="text" name="nationality" placeholder="Enter your Nationality."
-                                           value="{{ $edit->nationality }}"
+                                           value="{{ $client['nationality'] }}"
                                            class="form-control" id="nationality" required>
                                     @if ($errors->has('nationality'))
                                         <span class="help-block text-danger">
@@ -125,7 +125,7 @@
                                 <div class="col-lg-6">
                                     <label for="date_of_birth">Date Of Birth<span class="text-danger">*</span></label>
                                     <input type="text" name="date_of_birth" placeholder="Enter your Date of Birth."
-                                           value="{{ $edit->date_of_birth }}" class="form-control" id="date_of_birth" required>
+                                           value="{{ $client['date_of_birth'] }}" class="form-control" id="date_of_birth" required>
                                     @if ($errors->has('date_of_birth'))
                                         <span class="help-block text-danger">
                                             <strong>  {{ $errors->first('date_of_birth') }}</strong>
@@ -138,19 +138,19 @@
 
                                     <select class="form-control" id="education" name="education" required>
                                         <option value="">Select Your Education Background</option>
-                                        <option value="SLC" @if($edit->education=='SLC') <?php echo 'selected' ?> @endif>
+                                        <option value="SLC" @if($client['education']=='SLC') <?php echo 'selected' ?> @endif>
                                             SLC
                                         </option>
-                                        <option value="+2" @if($edit->education=='+2') <?php echo 'selected' ?> @endif>
+                                        <option value="+2" @if($client['education']=='+2') <?php echo 'selected' ?> @endif>
                                             +2
                                         </option>
-                                        <option value="Bachelor's Degree" @if($edit->education=="Bachelor's Degree") <?php echo 'selected' ?> @endif>
+                                        <option value="Bachelor's Degree" @if($client['education']=="Bachelor's Degree") <?php echo 'selected' ?> @endif>
                                             Bachelor's Degree
                                         </option>
-                                        <option value="Master's Degree" @if($edit->education=="Master's Degree") <?php echo 'selected' ?> @endif>
+                                        <option value="Master's Degree" @if($client['education']=="Master's Degree") <?php echo 'selected' ?> @endif>
                                             Master's Degree
                                         </option>
-                                        <option value="Doctorate or higher" @if($edit->education=="Doctorate or higher") <?php echo 'selected' ?> @endif>
+                                        <option value="Doctorate or higher" @if($client['education']=="Doctorate or higher") <?php echo 'selected' ?> @endif>
                                             Doctorate or higher
                                         </option>
                                     </select>
@@ -170,13 +170,13 @@
 
                                     <select class="form-control" id="preferred_contact" name="preferred_contact" required>
                                         <option value="">Select Your Preferred Contact</option>
-                                        <option value="Email" @if($edit->preferred_contact=="Email") <?php echo 'selected' ?> @endif>
+                                        <option value="Email" @if($client['preferred_contact']=="Email") <?php echo 'selected' ?> @endif>
                                             Email
                                         </option>
-                                        <option value="Phone" @if($edit->preferred_contact=="Phone") <?php echo 'selected' ?> @endif>
+                                        <option value="Phone" @if($client['preferred_contact']=="Phone") <?php echo 'selected' ?> @endif>
                                             Phone
                                         </option>
-                                        <option value="None" @if($edit->preferred_contact=="None") <?php echo 'selected' ?> @endif>
+                                        <option value="None" @if($client['preferred_contact']=="None") <?php echo 'selected' ?> @endif>
                                             None
                                         </option>
                                     </select>

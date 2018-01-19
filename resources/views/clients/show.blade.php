@@ -8,7 +8,7 @@
                 <div class="col-lg-8">
                     <ol class="breadcrumb">
                         <li><a href="{{route('clients.index')}}">Clients</a></li>
-                        <li class="active">{{ $client->name }}</li>
+                        <li class="active">{{ $client['name'] }}</li>
                     </ol>
                 </div>
 
@@ -30,47 +30,47 @@
                         <table class="table table-hover table-striped">
                             <tr>
                                 <td><b>Name :</b></td>
-                                <td> {{ $client->name }}</td>
+                                <td> {{ $client['name'] }}</td>
                             </tr>
 
                             <tr>
                                 <td><b>Gender :</b></td>
-                                <td>{{ $client->gender }}</td>
+                                <td>{{ $client['gender'] }}</td>
                             </tr>
 
                             <tr>
                                 <td><b>Phone Number :</b></td>
-                                <td>{{ $client->phone }}</td>
+                                <td>{{ $client['phone'] }}</td>
                             </tr>
 
                             <tr>
                                 <td><b>Email Address :</b></td>
-                                <td> {{ $client->email }}</td>
+                                <td> {{ $client['email'] }}</td>
                             </tr>
 
                             <tr>
                                 <td><b>Address : </b></td>
-                                <td>{{ $client->address }}</td>
+                                <td>{{ $client['address'] }}</td>
                             </tr>
 
                             <tr>
                                 <td><b>Nationality :</b></td>
-                                <td> {{ $client->nationality }}</td>
+                                <td> {{ $client['nationality'] }}</td>
                             </tr>
 
                             <tr>
                                 <td><b>Date of Birth :</b></td>
-                                <td>{{ $client->date_of_birth }}</td>
+                                <td>{{ $client['date_of_birth'] }}</td>
                             </tr>
 
                             <tr>
                                 <td><b>Education Level :</b></td>
-                                <td>{{ $client->education }}</td>
+                                <td>{{ $client['education'] }}</td>
                             </tr>
 
                             <tr>
                                 <td><b>Preferred Contact : </b></td>
-                                <td>{{ $client->preferred_contact }}</td>
+                                <td>{{ $client['preferred_contact'] }}</td>
                             </tr>
                         </table>
                     </div>

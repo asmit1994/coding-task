@@ -21,7 +21,7 @@ class ClientController extends Controller
     public function index()
     {
         $clients = $this->client->all();
-        dd($clients);
+        //dd($clients);
         return view('clients.index',compact('clients'))->with('i',1);
     }
 

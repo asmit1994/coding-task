@@ -10,7 +10,7 @@
                     </ol>
                 </div>
 
-                <div class="col-lg-4 index-button">
+                <div class="col-lg-4 header-button">
                     <a href="{{ route('clients.create') }}" class="pull-right btn btn-info">
                         <i class="fa fa-plus"></i> Add Client
                     </a>
@@ -74,17 +74,17 @@
                                             <td>{{ $client['preferred_contact'] }}</td>
                                             <td>
                                                 <a href="{{ route('clients.show', $i) }}"
-                                                   title="View Client Record!" data-rel="tooltip">
+                                                   title="View Client Record" data-rel="tooltip">
                                                     <i class="icon fa fa-eye"></i>
                                                 </a>
 
                                                 <a href="{{ route('clients.edit', $i) }}"
-                                                   title="Edit Client Record!" data-rel="tooltip">
+                                                   title="Edit Client Record" data-rel="tooltip">
                                                     <i class="icon fa fa-edit"></i>
                                                 </a>
 
                                                 <a href="{{ URL::to('clients/destroy/'.$i) }}"
-                                                   title="Delete Client Record!" data-rel="tooltip"
+                                                   title="Delete Client Record" data-rel="tooltip"
                                                    onclick="return ConfirmDelete()">
                                                     <i class="icon fa fa-trash"></i>
                                                 </a>

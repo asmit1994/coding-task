@@ -82,7 +82,7 @@
                                 <div class="col-lg-6">
                                     <label for="email">Email<span class="text-danger">*</span></label>
 
-                                    <input type="text" name="email" placeholder="Enter your Email."
+                                    <input type="text" name="email" placeholder="Enter your Email. for eg: example@example.com"
                                            value="{{ $client['email'] }}"
                                            class="form-control" id="email" required>
                                     @if ($errors->has('email'))

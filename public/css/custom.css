@@ -4,7 +4,7 @@
     font-family: "Agency FB";
     font-size: x-large;
 }
-.index-button {
+.header-button {
     margin-top: -50px;
     margin-bottom: -5px;
 }
@@ -14,9 +14,9 @@
 .table-hover tbody {
     background-color: #dddddd;
 }
-#client-table .icon {
-    font-size: 18px;
+#clientTable .icon {
+    font-size: 17px;
 }
-#client-table a {
+#clientTable a {
     padding-right: 10px;
 }

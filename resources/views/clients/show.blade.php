@@ -12,7 +12,7 @@
                     </ol>
                 </div>
 
-                <div class="col-lg-4">
+                <div class="col-lg-4 header-button">
                     <a href="{{ route('clients.index') }}" class="btn btn-info pull-right"
                        style="margin-left: 120px">
                         <i class="fa fa-chevron-left"></i> Back

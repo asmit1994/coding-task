@@ -17,6 +17,9 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     {{--link for fontawesome icons--}}
     <link rel="stylesheet" href="{{URL::asset('fontawesome/css/font-awesome.min.css')}}">
+    {{--JQuery Datatables--}}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+
 </head>
 <body>
 <div id="app">
@@ -85,16 +88,27 @@
 
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
+{{--JQuery CDN--}}
+<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
 {{--JQuery Datepicker--}}
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 {{--JQuery Validation--}}
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js"></script>
-{{--JQuery CDN--}}
-<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+{{--JQuery Datatables--}}
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 
 <script>
     $(function () {
+        $(function () {
+            $("#clientTable").DataTable({
+                lengthMenu: [
+                    [ 5, 10, 25, 50, -1 ],
+                    [ '5 rows', '10 rows', '25 rows', '50 rows', 'Show all' ]
+                ]
+            });
+        });
+
         $("#datepicker").datepicker({
             dateFormat: 'yy-mm-dd',
             changeMonth: true,

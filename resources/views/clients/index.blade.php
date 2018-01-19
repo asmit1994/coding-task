@@ -10,7 +10,7 @@
                     </ol>
                 </div>
 
-                <div class="col-lg-4">
+                <div class="col-lg-4 index-button">
                     <a href="{{ route('clients.create') }}" class="pull-right btn btn-info">
                         <i class="fa fa-plus"></i> Add Client
                     </a>
@@ -26,9 +26,10 @@
 
                     <div class="box-body">
                         @if(count($clients)>0)
-                            <table class="table table-striped table-hover" id="client-table">
+                            <table class="table table-striped table-hover" id="clientTable">
                                 <thead>
                                 <tr>
+                                    <th>S.N.</th>
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Phone</th>
@@ -44,6 +45,7 @@
                                 @foreach($clients as $client)
                                     @if($client['name'] == '')
                                         <tr class="danger">
+                                            <td>{{ $i }}</td>
                                             <td></td>
                                             <td></td>
                                             <td></td>
@@ -61,6 +63,7 @@
                                         <?php ++$i;  ?>
                                     @else
                                         <tr>
+                                            <td>{{ $i }}</td>
                                             <td>{{ $client['name'] }}</td>
                                             <td>{{ $client['email'] }}</td>
                                             <td>{{ $client['phone'] }}</td>

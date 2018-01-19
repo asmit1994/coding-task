@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 @section('content')
 
     <div class="container">

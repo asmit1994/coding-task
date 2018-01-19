@@ -16,7 +16,7 @@ class ClientService
     {
         $this->client = $client;
 
-        $this->filename = storage_path('app/client/file.csv');
+        $this->filename = storage_path('../app/file.csv');
     }
 
     /**
